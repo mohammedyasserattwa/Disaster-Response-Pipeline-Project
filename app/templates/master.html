@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Disasters</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
+
+
+
+        html, body{
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+        }
+        .navbar{
+            background-color: #222;
+            border-color: #080808;
+            color: #9d9d9d;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            height: 10vh;
+            padding: 0 100px;
+        }
+
+        .navbar ul{
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar a{
+            color: #9d9d9d;
+            text-decoration: none;
+            font-size: 20px;
+            font-family: sans-serif;
+        }
+
+        .navbar a:hover{
+            color: #fff;
+        }
+
+        .header-container{
+            background-image: url("https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1772&q=80");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 60vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+        
+        .title-section{
+            background-color: #222;
+            border-radius: 20px 0 0 20px;
+            width: 30%;
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .title-section p{
+            padding: 0 100px;
+            text-align: center;
+        }
+
+        .form-section{
+            background-color: #ffffff2f;
+            border-radius: 0 20px 20px 0;
+            width: 30%;
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .form-section form{
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px
+        }
+        .form-section p{
+            padding: 0 100px;
+            text-align: center;
+            color: black;
+        }
+
+        input{
+            width: 100%;
+            height: 50px;
+            border-radius: 10px;
+            border: none;
+            padding: 0 20px;
+            margin: 20px 0;
+        }
+
+        button{
+            height: 50px;
+            border-radius: 10px;
+            border: none;
+            padding: 0 20px;
+            margin: 20px 0;
+            background-color: #222;
+            color: #fff;
+            font-size: 16px;
+            font-family: sans-serif;
+            cursor: pointer;
+        }
+        .container{
+            padding: 100px;
+        }
+        footer{
+            background-color: #222;
+            color: #9d9d9d;
+            margin: 0;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+        <div class="navbar-header">
+            <a href="/">Disaster Response Project</a>
+        </div>
+        <ul>
+            <li><a href="https://www.udacity.com/">Made with Udacity</a></li>
+            <li><a href="https://github.com/mohammedyasserattwa">My Github</a></li>
+        </ul>
+</div>
+
+
+<div class="header-container">
+    <div class="title-section">
+        <h1>Disaster Response Project</h1>
+        <p>Analyzing message data for disaster response</p>
+        <p>You can view some visualisation related to the training dataset. Scroll Down.</p>
+    </div>
+        <div class="form-section">
+            <p>Enter a message to classify using the model.</p>
+            <form action="/go" method="get">
+            <input type="text" class="form-control form-control-lg" name="query" placeholder="Message">
+            <br>
+            <button type="submit" class="btn btn-lg btn-success">Classify Message</button>
+        </form>
+        {% block message %}
+        {% endblock %}
+        </div>
+        
+</div>
+
+<div class="container">
+    {% block content %}
+        <div class="page-header">
+            <h1 class="text-center">A Quick Overview</h1>
+        </div>
+        <section>
+            <h2>About the Project</h2>
+            <p>Welcome to our Disaster Message Predictor project, where data science meets real-world impact. Our mission is to harness the power of machine learning and data analysis to improve disaster response efforts. In this section, we'll take you through the key aspects of our project, from data collection to model development and beyond.</p>
+        </section>
+        
+    
+        <section>
+            <h2>Data Visualization</h2>
+            <p>One of the fundamental building blocks of our project is the diverse and extensive dataset we've collected. Below, you'll find visualizations that shed light on the message corpus used to train our predictive model.</p>
+            <p>In Figure 1, we present a visual representation of the message genres within our dataset. Notably, the 'news' genre stands out with an impressive count of nearly 13,000 messages, underscoring its significance in our data. This detailed breakdown sets the stage for a deeper exploration.</p>
+            <p>Figure 2 delves further into the data landscape, providing a comprehensive view of message category distribution. Our project involves categorizing messages into specific disaster-related categories, and this graph illuminates the prevalence of each category. The distribution reveals invaluable insights into the challenges we face and the strengths of our predictive model.</p>
+            {% for id in ids %}
+                <div class="graph" id="{{id}}"></div>
+            {% endfor %}
+        </section>
+        <section>
+            <h2>Model Development</h2>
+            <p>The heart of our project lies in the development of a sophisticated predictive model that can quickly and accurately classify incoming disaster-related messages. Building this model required a multi-step process, including data preprocessing, feature engineering, and the implementation of machine learning algorithms.</p>
+            
+            <p>Our team leveraged state-of-the-art techniques to ensure the model's effectiveness, and rigorous testing and validation were performed to fine-tune its performance. As a result, we've created a tool that aids disaster response teams in identifying and prioritizing messages during critical times.</p>
+        </section>
+        <section>
+            <h2>Real-World Impact</h2>
+            <p>Our Disaster Message Predictor isn't just an academic exercise; it's a practical tool with real-world applications. By accurately categorizing and prioritizing messages during disasters, we empower response teams to allocate resources efficiently and respond swiftly to those in need.</p>
+        
+            <p>We envision our project as a critical component of disaster response efforts, helping organizations and agencies streamline their operations and ultimately save lives. Join us on this journey as we explore the depths of data science and its potential to make a positive impact on our world.</p>
+        </section>
+        {% endblock %}
+    
+</div>
+<footer>
+    <p>&copy; 2023 Disaster Message Predictor</p>
+    <p>Created by Mohammed Yasser as part of the Udacity Data Science Nanodegree</p>
+</footer>
+
+<script type="text/javascript">
+    const graphs = {{graphJSON | safe}};
+    const ids = {{ids | safe}};
+    for(let i in graphs) {
+        Plotly.plot(ids[i], graphs[i].data, graphs[i].layout);
+    }
+</script>
+
+</body>
+</html>
